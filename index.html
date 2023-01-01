@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoWorld</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="styles\cards.css">
+    <link rel="stylesheet" href="styles\siteHead.css">
+    <link rel="stylesheet" href="styles\modalCards.css">
+
+    <!--Bootstrap CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!--Bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="modal fade centerd" id="exceedCoinsModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5 position-relative top-50 start-50 translate-middle">O<svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-emoji-frown-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm-2.715 5.933a.5.5 0 0 1-.183-.683A4.498 4.498 0 0 1 8 9.5a4.5 4.5 0 0 1 3.898 2.25.5.5 0 0 1-.866.5A3.498 3.498 0 0 0 8 10.5a3.498 3.498 0 0 0-3.032 1.75.5.5 0 0 1-.683.183zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z" />
+                            </svg>ps
+                            ...
+                        </h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>It's seems like you already liked 5 coins!</p>
+                        <p>Unfortunately, you can have only up to 5 favorite coins 😥</p>
+                        <p>Here are your favorite coins:</p>
+
+                        <div class="row centerd" id="modalCoinsDiv">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row container-fluid siteHead">
+        <div class="col centerd navBtns">
+            <button>Home</button>
+            <button>Live</button>
+            <button>About</button>
+        </div>
+        <div class="col">
+            <h1 class="centerd">Crypto&nbsp;<span class="centerd">₿</span>&nbsp;World</h1>
+        </div>
+        <div class="col centerd">
+            <input type="text" placeholder="Search" id="userInput">
+        </div>
+    </div>
+
+    <div class="row container-fluid cryptos cardsRows">
+
+        <div class="col centerd text-center">
+            <div class="card">
+                <div class="card-body d-flex flex-column centerd" data-coinId="${item.id}">
+                    <img src="">
+                    <h5 class="card-title coinId">${item.name}</h5>
+                    <p class="card-text">${item.symbol}</p>
+
+
+                    <div class="col">
+                        <button class="btn infoBtn btn-primary">More Info</button>
+
+                        <button class="favorite btn" data-favorite="white">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-heart"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                            </svg>
+                        </button>
+
+                    </div>
+
+                    <div class="AddData">
+                        <div class="centerd">
+                            <p class="loader">&nbsp;₿&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

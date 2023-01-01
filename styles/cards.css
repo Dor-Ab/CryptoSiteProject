@@ -1,0 +1,85 @@
+/* Class For Centering Items */
+.centerd {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Crypto Cards Class */
+.card {
+    transition: all 0.1888s;
+    background-color: rgb(244, 244, 244) !important;
+    margin: 0.5rem;
+    width: 12rem;
+}
+
+.card:hover {
+    background-color: rgb(230, 230, 230) !important;
+    border: 1px solid rgba(150, 19, 150, 0.39);
+
+}
+
+
+/* Coin Image */
+.card img {
+    transition: all 0.3s;
+    width: 5rem;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.AddData {
+    width: 12.2rem;
+}
+
+/* Favorite Button */
+.favorite {
+    transition: all 0.8s;
+    border-radius: 0.5rem;
+    background-color: rgb(230, 216, 216) !important;
+
+}
+
+.favorite:hover {
+    background-color: rgb(205, 196, 196) !important;
+
+}
+
+/* Favorite Heart */
+.favorite svg {
+    transition: all 0.3s;
+    width: 1rem;
+    height: 1rem;
+}
+
+.favorite:hover svg {
+    transform: scale(1.2);
+}
+
+/* Loader */
+.loader {
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    animation: loaderAnimation 1s infinite;
+}
+
+@keyframes loaderAnimation {
+    0% {
+        transform: rotate(360deg);
+        -webkit-text-stroke: 0.8px white;
+    }
+
+    50% {
+        background-color: gold;
+        color: white;
+        -webkit-text-stroke: 1px black;
+    }
+
+    100% {
+        -webkit-text-stroke: 0.8px white;
+    }
+}

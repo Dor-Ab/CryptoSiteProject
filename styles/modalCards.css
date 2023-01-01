@@ -1,0 +1,39 @@
+.modalCards {
+    min-width: 13rem !important;
+}
+
+.modal-body p {
+    font-size: larger;
+    margin-bottom: 0.3rem;
+}
+
+.modal-body p:nth-child(3) {
+    text-decoration: underline;
+}
+
+.modal-header {
+    max-height: 4rem;
+    padding-bottom: 0.2rem !important;
+    background-color: rgb(188, 25, 188);
+
+}
+
+.modal-header h2 {
+    font-size: xx-large !important;
+    margin-top: 2rem !important;
+}
+
+.modal-header svg {
+    transition: all 1s;
+    scale: 1.5;
+    color: yellow;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin: 0.2rem;
+}
+
+.modal-header:hover svg {
+    transition: all 1s;
+    transform: rotate(360deg) !important;
+}
