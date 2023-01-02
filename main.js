@@ -153,11 +153,6 @@ $(() => {
     $("#userInput").on("keyup", function () {
         const inputCoins = $(this).val()
 
-        let userCoins = allCoins.filter(coin => {
-            if (coin.symbol.includes(inputCoins) || coin.name.toLowerCase().includes(inputCoins) || coin.name.includes(inputCoins))
-                return coin
-        })
-
         const cards = $(".card").parent(".col")
 
         let showCards = []
@@ -176,7 +171,7 @@ $(() => {
             }
 
         }
-
+        console.log(showCards)
 
     })
 
