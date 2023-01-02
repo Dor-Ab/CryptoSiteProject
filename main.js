@@ -77,7 +77,7 @@ $(() => {
         $(".cardsRows").html(cards)
         $(".AddData").hide()
         showMoreInfo()
-        changeHeartColor()
+        changeHeartColorOnClick()
     }
 
     // Get More Info About Coin
@@ -123,7 +123,6 @@ $(() => {
     //Gets Info From Cookies
     function getInfoFromCookies(coinId) {
         let cookieArr = document.cookie.split("=" || ";");
-        console.log(cookieArr)
         // if (document.cookie === coinId + "eur")
         //     console.log(coinId)
 
@@ -177,14 +176,16 @@ $(() => {
 
 
     let favoriteCoins = []
-    function changeHeartColor() {
+    function changeHeartColorOnClick() {
         $(".favorite").on("click", function () {
             const heartColor = $(this).attr("data-favorite")
 
             if (heartColor === "white") {
 
                 if (favoriteCoins.length >= 5) {
-                    OpenBootstrapModal()
+                    let coinId = $(this).parents(".card-body").attr("data-coinid")
+                    console.log($(this).parent(".col").prev(".card-text"))
+                    OpenBootstrapModal(coinId)
                     return
                 }
 
@@ -232,7 +233,7 @@ $(() => {
         })
     }
 
-    function OpenBootstrapModal() {
+    function OpenBootstrapModal(coinId) {
         let counter = 1
         let modalCoins = ``
         for (let item of favoriteCoins) {
@@ -250,7 +251,7 @@ $(() => {
                     </div>
 
                     <div class="card-footer text-muted">
-                        ${counter}
+                        <span>${counter}</span>
                     </div>
                 </div>
             `
@@ -261,7 +262,7 @@ $(() => {
         $("#modalCoinsDiv").children().hide()
         $("#exceedCoinsModal").modal('show');
 
-        replaceBtnModal()
+        replaceBtnModal(coinId)
 
         const first = $("#modalCoinsDiv").children(".modalCards")[0]
         const second = $("#modalCoinsDiv").children(".modalCards")[1]
@@ -276,13 +277,60 @@ $(() => {
         $(fifth).fadeIn(2100)
     }
 
-    function replaceBtnModal() {
+    function replaceBtnModal(coinId) {
         $(".modalReplaceBtn").on("click", function () {
-            console.log($(this))
-        })
+            let currentCard = $(this).parents(".modalCards")
+            let currentCoin = $(this).prev(".card-text").text()
+            let counter = $(this).parent().next(".card-footer").text()
 
+            let newCoin = allCoins.find(coin => {
+                if (coin.id === coinId) {
+                    return coin
+                }
+            })
+
+            const tempCoins = []
+            for (let item of favoriteCoins) {
+                if (item.symbol === currentCoin) {
+                    continue
+                }
+                tempCoins.push(item)
+            }
+            favoriteCoins = tempCoins
+            favoriteCoins.push(newCoin)
+
+            let newCoinTemplate = `
+                    <div class="card-header">
+                        <span><b>${newCoin.name}</b></span>
+                    </div>
+
+                    <div class="card-body">
+                        <img src="${newCoin.image.large}"/>
+                        <p class="card-text">${newCoin.symbol}</p>
+                        <button class="btn btn-primary modalReplaceBtn">Replace</button>
+                    </div>
+
+                    <div class="card-footer text-muted">
+                    <span>${counter}</span>
+                    </div>
+            `
+            currentCard.html(newCoinTemplate)
+            changeHeartColorAfterReplaced(coinId)
+            console.log(favoriteCoins)
+        })
     }
 
 
+    function changeHeartColorAfterReplaced(coinId) {
+        let cards = $(".cryptos").children(".col").children(".card")
+
+        for (let card of cards) {
+            console.log($(card).text().toLowerCase())
+        }
+        console.log(coinId)
+    }
+
 
 })
+
+// לבדוק מה קורה בשליחת קויין איידי מודל
