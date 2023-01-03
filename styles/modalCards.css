@@ -7,10 +7,6 @@
     margin-bottom: 0.3rem;
 }
 
-.modal-body p:nth-child(3) {
-    text-decoration: underline;
-}
-
 .modal-header {
     max-height: 4rem;
     padding-bottom: 0.2rem !important;

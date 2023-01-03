@@ -183,9 +183,8 @@ $(() => {
             if (heartColor === "white") {
 
                 if (favoriteCoins.length >= 5) {
-                    let coinId = $(this).parents(".card-body").attr("data-coinid")
-                    console.log($(this).parent(".col").prev(".card-text"))
-                    OpenBootstrapModal(coinId)
+                    let coinSymbol = $(this).parent().parent().prev(".card-text").text()
+                    OpenBootstrapModal(coinSymbol)
                     return
                 }
 
@@ -233,7 +232,9 @@ $(() => {
         })
     }
 
-    function OpenBootstrapModal(coinId) {
+    function OpenBootstrapModal(coinSymbol) {
+        $(".modalSuccess").hide()
+        $(".modalExceed").show()
         let counter = 1
         let modalCoins = ``
         for (let item of favoriteCoins) {
@@ -262,7 +263,7 @@ $(() => {
         $("#modalCoinsDiv").children().hide()
         $("#exceedCoinsModal").modal('show');
 
-        replaceBtnModal(coinId)
+        replaceBtnModal(coinSymbol)
 
         const first = $("#modalCoinsDiv").children(".modalCards")[0]
         const second = $("#modalCoinsDiv").children(".modalCards")[1]
@@ -277,14 +278,14 @@ $(() => {
         $(fifth).fadeIn(2100)
     }
 
-    function replaceBtnModal(coinId) {
+    function replaceBtnModal(coinSymbol) {
         $(".modalReplaceBtn").on("click", function () {
             let currentCard = $(this).parents(".modalCards")
             let currentCoin = $(this).prev(".card-text").text()
             let counter = $(this).parent().next(".card-footer").text()
 
             let newCoin = allCoins.find(coin => {
-                if (coin.id === coinId) {
+                if (coin.symbol === coinSymbol) {
                     return coin
                 }
             })
@@ -315,22 +316,52 @@ $(() => {
                     </div>
             `
             currentCard.html(newCoinTemplate)
-            changeHeartColorAfterReplaced(coinId)
-            console.log(favoriteCoins)
+            changeHeartColorAfterReplaced(coinSymbol, currentCoin)
+            // console.log(favoriteCoins)
         })
     }
 
 
-    function changeHeartColorAfterReplaced(coinId) {
+    function changeHeartColorAfterReplaced(coinSymbol, currentCoin) {
         let cards = $(".cryptos").children(".col").children(".card")
 
         for (let card of cards) {
-            console.log($(card).text().toLowerCase())
+            if ($(card).children().children(".card-text").text() === coinSymbol) {
+                const whiteHeart = $(card).children().children(".col").children("div").children()
+                const blackHeart = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+              </svg>`
+
+                $(whiteHeart).html(blackHeart)
+                $(whiteHeart).attr("data-favorite", "black")
+
+            }
+            if ($(card).children().children(".card-text").text() === currentCoin) {
+                const blackHeart = $(card).children().children(".col").children("div").children()
+
+                const whiteHeart = `
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-heart"
+                viewBox="0 0 16 16">
+                <path
+                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                </svg>`
+
+                $(blackHeart).html(whiteHeart)
+                $(blackHeart).attr("data-favorite", "white")
+            }
         }
-        console.log(coinId)
+        console.log(favoriteCoins)
+        changeModalAfterCoinReplacement()
+
+    }
+
+    function changeModalAfterCoinReplacement() {
+        const replaceBtn = $(".modalReplaceBtn")
+        replaceBtn.slideUp(500)
+        $(".modalExceed").hide()
+        $(".modalSuccess").fadeIn(1000)
     }
 
 
 })
-
-// לבדוק מה קורה בשליחת קויין איידי מודל
