@@ -1,7 +1,17 @@
 /// <reference path="jquery-3.6.3.js"/>
 
 $(() => {
+    $(".about").hide()
 
+    $("#aboutBtn").on("click", function () {
+        $(".cryptos").fadeOut()
+        $(".about").delay(500).fadeIn()
+    })
+
+    $("#homeBtn").on("click", function () {
+        $(".about").fadeOut()
+        $(".cryptos").delay(500).fadeIn()
+    })
     let allCoins = []
 
     // Fetching Coins Api
