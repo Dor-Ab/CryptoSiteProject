@@ -1,13 +1,9 @@
-.aboutBody ul {
-    list-style-type: none;
-}
-
-.aboutBody li {
+.techs span {
     transition: all 0.2s;
     font-weight: bold;
 }
 
-.aboutBody li:hover {
+.techs span:hover {
     background-color: purple;
     border-radius: 10px;
     font-size: larger;
@@ -15,16 +11,20 @@
 }
 
 .johnBryce {
-    transition: all 0.5s;
     border: 2px solid black;
     border-radius: 10px;
     background-color: red;
-    font-weight: bold;
+}
+
+.johnBryce a {
+    transition: all 0.5s;
     color: white;
+    font-weight: bold;
+    font-size: larger;
     padding: 0.2rem;
 }
 
-.johnBryce:hover {
+.johnBryce:hover a {
     color: black;
-    font-size: larger;
+    font-size: x-large;
 }
