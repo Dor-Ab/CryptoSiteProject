@@ -3,6 +3,8 @@
 $(() => {
     $(".about").hide()
 
+    $(".card").hide()
+
     $("#aboutBtn").on("click", function () {
         $(".cryptos").fadeOut()
         $(".about").delay(500).fadeIn()
@@ -29,6 +31,8 @@ $(() => {
             <p class="reloadP">Error! <br>Status: ${err.status} <br> Click To Reload.</p>
             `
         $(".cryptos").children(".col").children(".card").html(errMessage)
+        $(".card").show()
+        $(".circles").hide()
         reloadAfterError()
     }
 
@@ -85,6 +89,8 @@ $(() => {
         }
 
         $(".cardsRows").html(cards)
+        $(".circles").hide()
+        $(".card").show()
         $(".AddData").hide()
         showMoreInfo()
         changeHeartColorOnClick()

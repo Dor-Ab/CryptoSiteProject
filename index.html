@@ -8,6 +8,7 @@
     <title>CryptoWorld</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="main.js"></script>
+    <link rel="stylesheet" href="styles\pageLoader.css">
     <link rel="stylesheet" href="styles\cards.css">
     <link rel="stylesheet" href="styles\siteHead.css">
     <link rel="stylesheet" href="styles\modalCards.css">
@@ -70,43 +71,30 @@
             <button>Live</button>
             <button id="aboutBtn">About</button>
         </div>
+
         <div class="col">
             <h1 class="centerd">Crypto&nbsp;<span class="centerd">₿</span>&nbsp;World</h1>
         </div>
+
         <div class="col centerd">
             <input type="text" placeholder="Search" id="userInput">
         </div>
     </div>
 
+    <div class="circles">
+
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+
+    </div>
+
     <div class="row container-fluid cryptos cardsRows">
 
         <div class="col centerd text-center">
-            <div class="card">
-                <div class="card-body d-flex flex-column centerd" data-coinId="${item.id}">
-                    <img src="">
-                    <h5 class="card-title coinId">${item.name}</h5>
-                    <p class="card-text">${item.symbol}</p>
+            <div class="card centerd">
 
-
-                    <div class="col">
-                        <button class="btn infoBtn btn-primary">More Info</button>
-
-                        <button class="favorite btn" data-favorite="white">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-heart"
-                                viewBox="0 0 16 16">
-                                <path
-                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                            </svg>
-                        </button>
-
-                    </div>
-
-                    <div class="AddData">
-                        <div class="centerd">
-                            <p class="loader">&nbsp;₿&nbsp;</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
