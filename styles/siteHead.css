@@ -41,6 +41,7 @@ h1 span {
 .navBtns button {
     transition: 0.1s all;
     border: none;
+    color: black;
     border-bottom: 3px solid black;
     border-radius: 0.5rem;
     margin: 0.5rem;
@@ -54,9 +55,19 @@ h1 span {
     transform: scale(0.9999);
 }
 
+/* Search */
 .siteHead input {
+    transition: all 0.1s;
     padding-left: 10px;
     border: none;
     border-bottom: 3px solid black;
     border-radius: 0.5rem;
+}
+
+.siteHead input:hover {
+    transform: scale(1.1);
+}
+
+.siteHead input:active {
+    transform: scale(1);
 }

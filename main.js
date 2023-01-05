@@ -173,7 +173,9 @@ $(() => {
         let showCards = []
         let hideCards = []
         for (let card of cards) {
-            if (!card.innerText.includes(inputCoins)) {
+            const coinName = $(card).children().children().children(".card-title").text()
+            const coinSymbol = $(card).children().children().children(".card-text").text()
+            if (!coinName.includes(inputCoins) && !coinName.toLowerCase().includes(inputCoins) && !coinSymbol.includes(inputCoins)) {
                 hideCards.push(card)
                 $(hideCards).hide()
             }
@@ -186,7 +188,6 @@ $(() => {
             }
 
         }
-        console.log(showCards)
 
     })
 
