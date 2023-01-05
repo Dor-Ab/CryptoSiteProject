@@ -78,10 +78,12 @@ $(() => {
             </div>
 
                 <div class="AddData">
-                <div class="centerd">
-                <p class="loader">&nbsp;₿&nbsp;</p>
+
+                    <div class="centerd lodaing">
+                        <p class="loader">&nbsp;₿&nbsp;</p>
+                    </div>
+                    <div class="dataDiv"></div>
                 </div>
-            </div>
             </div>
         </div>
         </div>`
@@ -133,6 +135,7 @@ $(() => {
             <span><b>USD:</b> ${usd}$</span>`
 
         setInfoToCookies(coin.id, euro, ils, usd)
+        $(DataDiv).prev(".lodaing").hide()
         $(DataDiv).html(usdCurrancy)
     }
 
@@ -155,7 +158,7 @@ $(() => {
 
                 // setInfoToCookie($(this).parent().parent().attr("data-coinId"))
 
-                getDataAboutCoin($(this).parent().parent().attr("data-coinId"), $(this).parent().next(".AddData"))
+                getDataAboutCoin($(this).parent().parent().attr("data-coinId"), $(this).parent().next(".AddData").children(".dataDiv"))
             }
             else {
                 $(this).parent().next(".AddData").slideUp(400)
@@ -334,7 +337,6 @@ $(() => {
             `
             currentCard.html(newCoinTemplate)
             changeHeartColorAfterReplaced(coinSymbol, currentCoin)
-            // console.log(favoriteCoins)
         })
     }
 
