@@ -5,7 +5,7 @@
     height: 3rem;
     background-color: purple;
     margin: 0.5rem;
-    animation: bounceLoader 0.5s infinite alternate-reverse linear;
+    animation: bounceLoader 0.8s infinite linear;
 }
 
 .circles {
@@ -29,7 +29,23 @@
 }
 
 @keyframes bounceLoader {
-    to {
+    0% {
+        margin-top: 0rem;
+    }
+
+    25% {
         margin-top: -3rem;
+    }
+
+    50% {
+        margin-top: 0rem;
+    }
+
+    75% {
+        margin-top: 0rem;
+    }
+
+    100% {
+        margin-top: 0rem;
     }
 }
