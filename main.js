@@ -108,12 +108,11 @@ $(() => {
 
     }
 
-    // Add Info To Cookies
+    // Add Coin Currency To Cookies For 2 Minutes
     function setInfoToCookies(coinId, coinCurrencyEur, coinCurrencyIls, coinCurrencyUsd) {
         const date = new Date();
         date.setTime(date.getTime() + (2 * 60 * 1000));
         let expires = "; expires=" + date.toGMTString();
-        console.log(expires)
 
         document.cookie = `${coinId} eur =${coinCurrencyEur} ${expires}`
         document.cookie = `${coinId} ils =${coinCurrencyIls} ${expires}`
@@ -121,29 +120,51 @@ $(() => {
 
     }
 
-    // Adds Info To Card
+    // Adds Coin Currency To Card From Ajax
     function addMoreInfo(coin, DataDiv) {
         const euro = coin.market_data.current_price.eur
         const ils = coin.market_data.current_price.ils
         const usd = coin.market_data.current_price.usd
 
-        getInfoFromCookies(coin.id)
-
-        const usdCurrancy = `
+        const coinCurrancy = `
             <span><b>EUR:</b> ${euro}€</span><br>
             <span><b>ILS:</b> ${ils}₪</span><br>
             <span><b>USD:</b> ${usd}$</span>`
 
         setInfoToCookies(coin.id, euro, ils, usd)
         $(DataDiv).prev(".lodaing").hide()
-        $(DataDiv).html(usdCurrancy)
+        $(DataDiv).html(coinCurrancy)
+    }
+
+    // Add Coin Currency To Card From Cookies 
+    function addMoreInfoFromCookies(cookies, dataDiv) {
+
+        let values = cookies.split("\n")
+        let eur = values[0]
+        let ils = values[1]
+        let usd = values[2]
+
+        const coinCurrancy = `
+        <span><b>EUR:</b> ${eur}€</span><br>
+        <span><b>ILS:</b> ${ils}₪</span><br>
+        <span><b>USD:</b> ${usd}$</span>`
+
+        $(dataDiv).prev(".lodaing").hide()
+        $(dataDiv).html(coinCurrancy)
     }
 
     //Gets Info From Cookies
-    function getInfoFromCookies(coinId) {
-        let cookieArr = document.cookie.split("=" || ";");
-        // if (document.cookie === coinId + "eur")
-        //     console.log(coinId)
+    function getInfoFromCookies(name) {
+        let value = "; " + document.cookie
+        let usdParts = value.split("; " + name + " usd" + "=")
+        let eurParts = value.split("; " + name + " eur" + "=")
+        let ilsParts = value.split("; " + name + " ils" + "=")
+        if (usdParts.length == 2 && eurParts.length == 2 && ilsParts.length == 2) {
+            let eur = eurParts.pop().split(";").shift()
+            let ils = ilsParts.pop().split(";").shift()
+            let usd = usdParts.pop().split(";").shift()
+            return eur + "\n" + ils + "\n" + usd
+        }
 
     }
 
@@ -156,9 +177,13 @@ $(() => {
                 $(this).parent().next(".AddData").slideDown(400)
                 $(this).html("Less Info")
 
-                // setInfoToCookie($(this).parent().parent().attr("data-coinId"))
-
-                getDataAboutCoin($(this).parent().parent().attr("data-coinId"), $(this).parent().next(".AddData").children(".dataDiv"))
+                if (getInfoFromCookies($(this).parent().parent().attr("data-coinId"))) {
+                    let cookie = getInfoFromCookies($(this).parent().parent().attr("data-coinId"))
+                    addMoreInfoFromCookies(cookie, $(this).parent().next(".AddData").children(".dataDiv"))
+                }
+                else {
+                    getDataAboutCoin($(this).parent().parent().attr("data-coinId"), $(this).parent().next(".AddData").children(".dataDiv"))
+                }
             }
             else {
                 $(this).parent().next(".AddData").slideUp(400)
@@ -194,7 +219,7 @@ $(() => {
 
     })
 
-
+    // Changes Heart Color Of Card On Click And Adding Coin To Favorites
     let favoriteCoins = []
     function changeHeartColorOnClick() {
         $(".favorite").on("click", function () {
@@ -252,6 +277,7 @@ $(() => {
         })
     }
 
+    // Opens Modal If More Then 5 Coins Selected
     function OpenBootstrapModal(coinSymbol) {
         $(".modalSuccess").hide()
         $(".modalExceed").show()
@@ -298,6 +324,7 @@ $(() => {
         $(fifth).fadeIn(2100)
     }
 
+    // Replace Coin Option On Modal
     function replaceBtnModal(coinSymbol) {
         $(".modalReplaceBtn").on("click", function () {
             let currentCard = $(this).parents(".modalCards")
@@ -340,7 +367,7 @@ $(() => {
         })
     }
 
-
+    // Changes Heart Color On Main Page After Coin Replacement (If Replaced)
     function changeHeartColorAfterReplaced(coinSymbol, currentCoin) {
         let cards = $(".cryptos").children(".col").children(".card")
 
@@ -370,11 +397,11 @@ $(() => {
                 $(blackHeart).attr("data-favorite", "white")
             }
         }
-        console.log(favoriteCoins)
         changeModalAfterCoinReplacement()
 
     }
 
+    // Shows Confirmation That Coin Replaced
     function changeModalAfterCoinReplacement() {
         const replaceBtn = $(".modalReplaceBtn")
         replaceBtn.slideUp(500)
