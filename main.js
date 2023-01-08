@@ -122,6 +122,9 @@ $(() => {
 
     // Adds Coin Currency To Card From Ajax
     function addMoreInfo(coin, dataDiv) {
+        $(dataDiv).prev(".lodaing").show()
+        $(dataDiv).hide()
+
         const euro = coin.market_data.current_price.eur
         const ils = coin.market_data.current_price.ils
         const usd = coin.market_data.current_price.usd
@@ -132,15 +135,17 @@ $(() => {
             <span><b>USD:</b> ${usd}$</span>`
 
         setInfoToCookies(coin.id, euro, ils, usd)
-        $(dataDiv).prev(".lodaing").slideUp(500)
         $(dataDiv).html(coinCurrancy)
+
+        $(dataDiv).prev(".lodaing").slideUp(500)
+        $(dataDiv).show()
+
     }
 
     // Add Coin Currency To Card From Cookies 
     function addMoreInfoFromCookies(cookies, dataDiv) {
 
-        $(dataDiv).prev(".lodaing").show()
-        $(dataDiv).hide()
+        $(dataDiv).prev(".lodaing").hide()
 
         let values = cookies.split("\n")
         let eur = values[0]
@@ -155,7 +160,6 @@ $(() => {
 
         $(dataDiv).html(coinCurrancy)
         $(dataDiv).show()
-        $(dataDiv).prev(".lodaing").slideUp(500)
 
         return true
     }
