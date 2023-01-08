@@ -132,12 +132,15 @@ $(() => {
             <span><b>USD:</b> ${usd}$</span>`
 
         setInfoToCookies(coin.id, euro, ils, usd)
-        $(dataDiv).prev(".lodaing").hide()
+        $(dataDiv).prev(".lodaing").slideUp(500)
         $(dataDiv).html(coinCurrancy)
     }
 
     // Add Coin Currency To Card From Cookies 
     function addMoreInfoFromCookies(cookies, dataDiv) {
+
+        $(dataDiv).prev(".lodaing").show()
+        $(dataDiv).hide()
 
         let values = cookies.split("\n")
         let eur = values[0]
@@ -149,8 +152,12 @@ $(() => {
         <span><b>ILS:</b> ${ils}₪</span><br>
         <span><b>USD:</b> ${usd}$</span>`
 
-        $(dataDiv).prev(".lodaing").hide()
+
         $(dataDiv).html(coinCurrancy)
+        $(dataDiv).show()
+        $(dataDiv).prev(".lodaing").slideUp(500)
+
+        return true
     }
 
     //Gets Info From Cookies
@@ -221,6 +228,7 @@ $(() => {
 
     // Changes Heart Color Of Card On Click And Adding Coin To Favorites
     let favoriteCoins = []
+
     function changeHeartColorOnClick() {
         $(".favorite").on("click", function () {
             const heartColor = $(this).attr("data-favorite")
