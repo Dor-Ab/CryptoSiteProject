@@ -184,8 +184,8 @@ $(() => {
         $(".infoBtn").on("click", function () {
             if ($(this).text() === "More Info") {
 
-                $(this).parent().next(".loader").html("₿")
                 $(this).parent().next(".AddData").slideDown(400)
+                $(this).parent().next(".AddData").next(".dataDiv").hide()
                 $(this).html("Less Info")
 
                 if (getInfoFromCookies($(this).parent().parent().attr("data-coinId"))) {
