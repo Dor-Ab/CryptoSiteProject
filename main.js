@@ -294,7 +294,7 @@ $(() => {
 
                 favoriteCoins = tempCoins
             }
-            console.log(favoriteCoins)
+            // console.log(favoriteCoins)
         })
     }
 
