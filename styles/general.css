@@ -1,6 +1,6 @@
 body {
     background-image: url("../Assets/pageBackground.jpg");
-    min-height: 500px;
+    min-height: 100rem;
 
     background-attachment: fixed;
     background-position: center;
