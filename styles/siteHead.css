@@ -4,8 +4,16 @@
     margin: 0 !important;
     padding: 0 !important;
     padding-top: 1rem !important;
-    background-color: rgb(150, 19, 150);
+    background-image: url("../Assets/siteHeadBackground.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     z-index: 999;
+}
+
+h1 {
+    color: #ffffff;
+    text-shadow: 2px 2px 0 #252525, 2px -2px 0 #252525, -2px 2px 0 #252525, -2px -2px 0 #252525, 2px 0px 0 #252525, 0px 2px 0 #252525, -2px 0px 0 #252525, 0px -2px 0 #252525, 2px 2px 4px rgba(18, 30, 49, 0);
 }
 
 /* B Logo */
