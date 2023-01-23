@@ -2,23 +2,19 @@
 
 $(() => {
     $(".about").hide()
-    $("#chartContainer").hide()
     $(".card").hide()
 
     $("#homeBtn").on("click", function () {
         $(".about").fadeOut()
-        $("#chartContainer").fadeOut()
         $(".cryptos").delay(500).fadeIn()
     })
 
     $("#liveBtn").on("click", function () {
         $(".about").fadeOut()
         $(".cryptos").fadeOut()
-        $("#chartContainer").delay(500).fadeIn()
     })
 
     $("#aboutBtn").on("click", function () {
-        $("#chartContainer").fadeOut()
         $(".cryptos").fadeOut()
         $(".about").delay(500).fadeIn()
     })
