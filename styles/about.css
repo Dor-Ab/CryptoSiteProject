@@ -46,6 +46,11 @@
     font-weight: bold;
 }
 
+.aboutBody h3 {
+    margin-top: 0.5rem;
+    margin-bottom: -0.5rem;
+}
+
 .aboutBody>*:hover {
     background: rgb(230, 230, 230);
 }
