@@ -1,3 +1,7 @@
+.techs {
+    margin-top: -0.5rem;
+}
+
 .techs span {
     transition: all 0.2s;
     font-weight: bold;
@@ -27,4 +31,21 @@
 .johnBryce:hover a {
     color: black;
     font-size: x-large;
+}
+
+.aboutBody {
+    width: 24rem !important;
+}
+
+.aboutBody>* {
+    transition: all 0.1888s;
+    padding: 0.13rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+    background: rgb(244, 244, 244);
+    font-weight: bold;
+}
+
+.aboutBody>*:hover {
+    background: rgb(230, 230, 230);
 }
