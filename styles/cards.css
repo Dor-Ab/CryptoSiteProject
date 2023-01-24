@@ -39,7 +39,7 @@
     transition: all 0.8s;
     border-radius: 0.5rem;
     background-color: rgb(230, 216, 216) !important;
-
+    margin-left: 0.3rem;
 }
 
 .favorite:hover {
