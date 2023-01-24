@@ -46,6 +46,16 @@
     font-weight: bold;
 }
 
+.aboutBody-dark>* {
+    transition: all 0.1888s;
+    padding: 0.13rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+    background: #252525;
+    color: white;
+    font-weight: bold;
+}
+
 .aboutBody h3 {
     margin-top: 0.5rem;
     margin-bottom: -0.5rem;
@@ -53,4 +63,8 @@
 
 .aboutBody>*:hover {
     background: rgb(230, 230, 230);
+}
+
+.aboutBody-dark>*:hover {
+    background: rgb(49, 49, 49);
 }

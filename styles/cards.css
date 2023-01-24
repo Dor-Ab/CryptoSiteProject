@@ -13,10 +13,21 @@
     width: 12rem;
 }
 
+.card-dark {
+    transition: all 0.1888s;
+    background-color: rgb(53, 53, 53) !important;
+    margin: 0.5rem;
+    width: 12rem;
+}
+
 .card:hover {
     background-color: rgb(230, 230, 230) !important;
     border: 1px solid rgba(150, 19, 150, 0.39);
+}
 
+.card-dark:hover {
+    background-color: rgb(63, 63, 63) !important;
+    border: 1px solid rgba(150, 19, 150, 0.39);
 }
 
 
@@ -44,7 +55,6 @@
 
 .favorite:hover {
     background-color: rgb(205, 196, 196) !important;
-
 }
 
 /* Favorite Heart */

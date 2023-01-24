@@ -8,43 +8,14 @@ body {
     background-size: cover;
 }
 
-#favoriteCardsBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.8s;
-    border: none;
-    border-radius: 1rem;
+.body-dark {
+    background-image: url('../Assets/darkPageBackground.jpg');
+    min-height: 37rem;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
     color: white;
-    background: #252522;
-    height: 1.5rem;
-    margin-left: 1rem;
-}
-
-#favoriteCardsBtn span {
-    display: none;
-    opacity: 0;
-}
-
-#favoriteCardsBtn svg {
-    transition: all 0.3s;
-    width: 1rem;
-    height: 1rem;
-}
-
-#favoriteCardsBtn:hover span {
-    display: inline-block;
-    animation: spanAnimaFavBtn 1s forwards;
-
-}
-
-#favoriteCardsBtn:hover svg {
-    transform: scale(1.2);
-    margin-right: 0.3rem;
-}
-
-@keyframes spanAnimaFavBtn {
-    to {
-        opacity: 100%;
-    }
 }

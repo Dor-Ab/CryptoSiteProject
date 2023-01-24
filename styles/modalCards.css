@@ -1,10 +1,23 @@
 .modalCards {
     min-width: 13rem !important;
+    color: black;
+}
+
+.modalCards .card-text {
+    color: black !important;
 }
 
 .modal-body p {
     font-size: larger;
     margin-bottom: 0.3rem;
+}
+
+.modal-body-dark {
+    background-color: rgb(53, 53, 53) !important;
+}
+
+.modal-body-dark p {
+    color: white;
 }
 
 .modal-header {

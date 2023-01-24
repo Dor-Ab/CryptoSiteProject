@@ -490,5 +490,14 @@ $(() => {
         $(".modalSuccess").fadeIn(1000)
     }
 
+    $("#darkModebtn").on("click", function () {
+        $("body").toggleClass("body-dark")
+        $(".card").toggleClass("card-dark")
+        $(".modal-body").toggleClass("modal-body-dark")
+        $("#userInput").toggleClass("dark-input")
+        $(".navBtns").toggleClass("navBtns-dark")
+        $(".aboutBody").toggleClass("aboutBody-dark")
+    })
+
 
 })
