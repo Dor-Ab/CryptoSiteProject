@@ -74,6 +74,8 @@
     border-radius: 50%;
     width: 2rem;
     height: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 0rem;
     animation: loaderAnimation 1s infinite;
 }
 
