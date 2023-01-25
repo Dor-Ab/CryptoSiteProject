@@ -105,9 +105,14 @@ h1 span {
     border-radius: 1rem;
     color: white;
     background: #252522;
-    height: 1.5rem;
+    min-height: 1.5rem;
     margin-left: 1rem;
 }
+
+#favoriteCardsBtn:hover {
+    animation: spacielBtnsAnima 1s forwards;
+}
+
 
 #favoriteCardsBtn span {
     display: none;
@@ -130,12 +135,6 @@ h1 span {
     margin-right: 0.3rem;
 }
 
-@keyframes spanAnimaHeadBtn {
-    to {
-        opacity: 100%;
-    }
-}
-
 /* Dark Mode Button */
 #darkModebtn {
     display: flex;
@@ -146,8 +145,12 @@ h1 span {
     border-radius: 1rem;
     color: white;
     background: #252522;
-    height: 1.5rem;
+    min-height: 1.5rem;
     margin-left: 0.3rem;
+}
+
+#darkModebtn:hover {
+    animation: spacielBtnsAnima 1s forwards;
 }
 
 #darkModebtn span {
@@ -169,4 +172,25 @@ h1 span {
 #darkModebtn:hover svg {
     transform: scale(1.2);
     margin-right: 0.3rem;
+}
+
+@keyframes spanAnimaHeadBtn {
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes spacielBtnsAnima {
+    0% {
+        padding-right: 0rem;
+    }
+
+    25% {
+        padding-right: 2rem;
+        color: lightpink;
+    }
+
+    100% {
+        padding-right: 0.3rem;
+    }
 }
