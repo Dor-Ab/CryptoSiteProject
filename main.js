@@ -9,11 +9,6 @@ $(() => {
         $(".cryptos").delay(500).fadeIn()
     })
 
-    $("#liveBtn").on("click", function () {
-        $(".about").fadeOut()
-        $(".cryptos").fadeOut()
-    })
-
     $("#aboutBtn").on("click", function () {
         $(".cryptos").fadeOut()
         $(".about").delay(500).fadeIn()
@@ -105,13 +100,26 @@ $(() => {
     }
 
     // Get More Info About Coin
-    function getDataAboutCoin(coinId, DataDiv) {
+    function getDataAboutCoin(coinId, dataDiv) {
         $.ajax({
             url: `https://api.coingecko.com/api/v3/coins/${coinId}`,
-            success: coins => addMoreInfo(coins, DataDiv),
-            error: err => console.log(err)
+            success: coins => addMoreInfo(coins, dataDiv),
+            error: err => displayErrorForCoinInfo(err, dataDiv)
         })
 
+    }
+
+    // Catch Error When Trying To Display Info For Coin
+    function displayErrorForCoinInfo(err, dataDiv) {
+        $(dataDiv).prev(".lodaing").show()
+        $(dataDiv).hide()
+        const showError = `
+                        <p>${err.statusText} <br> Status: ${err.status} <br> Try Again</p>
+        `
+
+        $(dataDiv).html(showError)
+        $(dataDiv).show()
+        $(dataDiv).prev(".lodaing").slideUp()
     }
 
     // Add Coin Currency To Cookies For 2 Minutes
@@ -505,10 +513,22 @@ $(() => {
         if ($(this).children("span").text() === "Dark Mode") {
             $(this).children("span").html("Light Mode")
             $(this).children("svg").html(lightModeBtn)
+            $(this).children().css("color", "white")
+            $(this).css("background-color", "#252522")
+
+            //Changing Favorite Btn Color
+            $("#favoriteCardsBtn").children().css("color", "white")
+            $("#favoriteCardsBtn").css("background-color", "#252522")
         }
         else {
             $(this).children("span").html("Dark Mode")
             $(this).children("svg").html(darkModeBtn)
+            $(this).children().css("color", "black")
+            $(this).css("background-color", "white")
+
+            //Changing Favorite Btn Color
+            $("#favoriteCardsBtn").children().css("color", "black")
+            $("#favoriteCardsBtn").css("background-color", "white")
         }
 
         $("body").toggleClass("body-dark")
