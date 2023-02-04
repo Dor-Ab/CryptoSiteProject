@@ -114,7 +114,7 @@ $(() => {
         $(dataDiv).prev(".lodaing").show()
         $(dataDiv).hide()
         const showError = `
-                        <p>${err.statusText} <br> Status: ${err.status} <br> Try Again</p>
+                        <p>${err.statusText} <br> Status: ${err.status} <br>Check Your Connection And Try Again</p>
         `
 
         $(dataDiv).html(showError)
