@@ -19,7 +19,7 @@ $(() => {
     // Fetching Coins Api
     $(() => {
         $.ajax({
-            url: `https://api.coingecko.com/api/v3/coins`,
+            url: `https://api.coingecko.com/api/v3/coins/`,
             success: coins => handleCoins(coins),
             error: err => coinError(err)
         })
