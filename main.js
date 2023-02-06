@@ -220,8 +220,11 @@ $(() => {
     // User Live Input Search
     $("#userInput").on("keyup", function () {
         const inputCoins = $(this).val()
-
         const cards = $(".card").parent(".col")
+
+        if ($("#favoriteCardsBtn").children("span").text() === "Hide Faves") {
+            $("#favoriteCardsBtn").triggerHandler("click")
+        }
 
         let showCards = []
         let hideCards = []
@@ -322,6 +325,7 @@ $(() => {
 
 
         if (favoriteCoins.length >= 1) {
+            $("#userInput").val("")
             let hideOrShowText = $(this).children("span").text()
             const cards = $(".card").parent(".col")
 
